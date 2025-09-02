@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Deployed App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        .deploy-time {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Deployment Successful!</h1>
+        <p>This page was automatically deployed from GitHub</p>
+        <p>CI/CD Pipeline is working perfectly!</p>
+        
+        <div class="deploy-time">
+            <p>Last deployed: <span id="deploy-time"></span></p>
+            <p>Version: 2.0.0</p>
+        </div>
+    </div>
+
+    <script>
+        // Show current deployment time
+        document.getElementById('deploy-time').textContent = new Date().toLocaleString();
+        
+        // Update time every minute
+        setInterval(() => {
+            document.getElementById('deploy-time').textContent = new Date().toLocaleString();
+        }, 60000);
+    </script>
+</body>
+</html>
