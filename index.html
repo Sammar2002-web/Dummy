@@ -3,59 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Deployed App</title>
+    <title>🚀 CI/CD Deployment Test</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             text-align: center;
             padding: 50px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
+            margin: 0;
         }
         .container {
             background: rgba(255, 255, 255, 0.1);
-            padding: 30px;
-            border-radius: 15px;
+            padding: 40px;
+            border-radius: 20px;
             backdrop-filter: blur(10px);
             max-width: 600px;
             margin: 0 auto;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
         h1 {
             font-size: 2.5em;
             margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
-        p {
-            font-size: 1.2em;
-            margin: 10px 0;
-        }
-        .deploy-time {
+        .deploy-info {
             background: rgba(255, 255, 255, 0.2);
-            padding: 10px;
-            border-radius: 5px;
-            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .version {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        .timestamp {
+            font-size: 1.2em;
+            color: #FFD700;
+        }
+        .success-badge {
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: inline-block;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        .instructions {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: left;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🚀 Deployment Successful!</h1>
-        <p>This page was automatically deployed from GitHub</p>
-        <p>CI/CD Pipeline is working perfectly!</p>
+        <h1>🚀 CI/CD Deployment Successful!</h1>
         
-        <div class="deploy-time">
-            <p>Last deployed: <span id="deploy-time"></span></p>
-            <p>Version: 2.0.0</p>
+        <div class="success-badge">✅ DEPLOYMENT ACTIVE</div>
+        
+        <div class="deploy-info">
+            <p class="version">Version: 2.1.0</p>
+            <p class="timestamp">Last Deployed: <span id="deployTime"></span></p>
+            <p>Deployment Count: <span id="deployCount">3</span></p>
+        </div>
+
+        <div class="instructions">
+            <h3>📋 How This Works:</h3>
+            <p>1. Edit this file in GitHub</p>
+            <p>2. Commit changes</p>
+            <p>3. GitHub Actions automatically deploys to server</p>
+            <p>4. Refresh this page to see updates!</p>
+        </div>
+
+        <div class="deploy-info">
+            <h3>🎯 Test the Deployment:</h3>
+            <p>Change the version number above, commit, and refresh!</p>
+            <p>Next version: <strong>2.1.1</strong></p>
         </div>
     </div>
 
     <script>
         // Show current deployment time
-        document.getElementById('deploy-time').textContent = new Date().toLocaleString();
+        const now = new Date();
+        document.getElementById('deployTime').textContent = now.toLocaleString();
         
-        // Update time every minute
+        // Update time every second
         setInterval(() => {
-            document.getElementById('deploy-time').textContent = new Date().toLocaleString();
-        }, 60000);
+            document.getElementById('deployTime').textContent = new Date().toLocaleString();
+        }, 1000);
+
+        // Simulate deployment count (you can make this dynamic later)
+        let count = 3;
+        setInterval(() => {
+            document.getElementById('deployCount').textContent = count++;
+        }, 5000);
     </script>
 </body>
 </html>
