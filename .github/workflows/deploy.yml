@@ -21,55 +21,6 @@ jobs:
         with:
           host: "184.168.123.93"
           username: "adminhala"
-          key: |
-            -----BEGIN OPENSSH PRIVATE KEY-----
-            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
-            -----END OPENSSH PRIVATE KEY-----
+          password: vjs9cdt%rVuf91q0
           source: "*"
           target: "/var/www/my-new-app/"
