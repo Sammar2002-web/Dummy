@@ -1,26 +1,35 @@
 name: Deploy to Server
 
 on:
+  repository_dispatch:
+    types: [deploy-trigger]
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
 
-      - name: List files (Debug)
-        run: ls -la
+    - name: Clean server directory
+      uses: appleboy/ssh-action@v0.1.10
+      with:
+        host: "184.168.123.93"
+        username: "adminhala"
+        password: vjs9cdt%rVuf91q0
+        script: |
+          rm -rf /var/www/my-new-app/*
+          mkdir -p /var/www/my-new-app/
 
-      - name: Deploy files to Server
-        uses: appleboy/scp-action@v0.1.3
-        with:
-          host: "184.168.123.93"
-          username: "adminhala"
-          password: vjs9cdt%rVuf91q0
-          source: "*"
-          target: "/var/www/my-new-app/"
+    - name: Deploy files to Server (Exclude .git)
+      uses: appleboy/scp-action@v0.1.3
+      with:
+        host: "184.168.123.93"
+        username: "adminhala"
+        password: vjs9cdt%rVuf91q0
+        source: "*.html,*.css,*.js,*.json,*.png,*.jpg,*.jpeg,*.gif,*.svg,*.ico,*.txt"
+        target: "/var/www/my-new-app/"
+        strip_components: 1
